@@ -1,36 +1,34 @@
 <template>
     <div class="container">
         <h3 class="title">Конвертер валют</h3>
-        <input 
-        type="number"
-        placeholder="Введите сумму"
-        class="input"
-        v-model="summ"
+        <my-input-currency-converter
+            v-model="summ"
+        />
+        <my-select-currency-converter
+            v-model="toCurrency"
+            :options="currencies"
+        />
+        <my-button-currency-converter
+            @click="convert">
+                Конвертировать
+        </my-button-currency-converter>
+        <input
+            type="number"
+            class="result"
+            placeholder="Результат"
+            :value="resultText"
+            readonly
         >
-        <select v-model="toCurrency" class="select-field">
-            <option 
-            v-for="currency in currencies" 
-            :key="currency"
-            :value="currency">
-                {{ currency }}
-            </option>
-        </select>
-        <button 
-        @click="convert"
-        class="btn">
-            Конвертировать
-        </button>
-        <input 
-        type="number"
-        class="result"
-        placeholder="Результат"
-        :value="resultText"
-        readonly>
     </div>
 </template>
 
 <script>
+import MyButtonCurrencyConverter from './UI/MyButton-CurrencyConverter'
+import MyInputCurrencyConverter from './UI/MyInput-CurrencyConverter'
+import MySelectCurrencyConverter from './UI/MySelect-CurrencyConverter'
+
 export default {
+    components: { MySelectCurrencyConverter, MyInputCurrencyConverter, MyButtonCurrencyConverter },
     data() {
         return {
             summ: 0,
@@ -66,29 +64,6 @@ export default {
 .title {
     text-align: center;
     font-size: 22px;
-}
-
-.input,
-.select-field {
-    width: 100%;
-    padding: 8px;
-    margin: 8px 0;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #555;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-}
-
-.btn {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    background-color: lightcoral;
-    color: white;
-    border-radius: 5px;
-    font-size: 18px;
-    border: 1px solid #ccc;
 }
 
 .result {
