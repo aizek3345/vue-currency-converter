@@ -19,7 +19,7 @@ export default {
 
     data() {
         return {
-            currencies: ['USD', 'EUR'],
+            currencies: ['USD'],
         }
     },
 
