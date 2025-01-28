@@ -22,4 +22,13 @@ export default {
     font-size: 18px;
     border: 1px solid #ccc;
 }
+
+.btn:hover {
+    background-color: red;
+}
+
+.btn:active {
+    background-color: darkred;
+    transform: translateY(1px);
+}
 </style>

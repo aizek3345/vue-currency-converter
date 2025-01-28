@@ -6,19 +6,17 @@
         />
         <my-select-currency-converter
             v-model="toCurrency"
-            :options="currencies"
         />
         <my-button-currency-converter
             @click="convert">
                 Конвертировать
         </my-button-currency-converter>
-        <input
-            type="number"
-            class="result"
-            placeholder="Результат"
-            :value="resultText"
-            readonly
-        >
+        <my-input-currency-converter
+            v-model="resultText"
+            :Placeholder="'Результат'"
+            ReadOnly
+            isResult
+        />
     </div>
 </template>
 
@@ -28,13 +26,12 @@ import MyInputCurrencyConverter from './UI/MyInput-CurrencyConverter'
 import MySelectCurrencyConverter from './UI/MySelect-CurrencyConverter'
 
 export default {
-    components: { MySelectCurrencyConverter, MyInputCurrencyConverter, MyButtonCurrencyConverter },
+    components: { MySelectCurrencyConverter, MyButtonCurrencyConverter, MyInputCurrencyConverter },
     data() {
         return {
             summ: 0,
             fromCurrency: 'RUB',
             toCurrency: 'USD',
-            currencies: ['USD', 'EUR'],
             rates: {
                 USD: 0.010,
                 EUR: 0.0096,
@@ -64,17 +61,5 @@ export default {
 .title {
     text-align: center;
     font-size: 22px;
-}
-
-.result {
-    width: 100%;
-    padding: 8px;
-    margin-top: 15px;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #555;
-    box-sizing: border-box;
-    text-align: center;
-    border: 1px solid #ccc;
 }
 </style>

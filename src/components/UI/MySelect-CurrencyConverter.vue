@@ -4,7 +4,7 @@
         @change="updateValue"
         class="select-field">
             <option 
-                v-for="currency in options" 
+                v-for="currency in currencies" 
                 :key="currency"
                 :value="currency">
                     {{ currency }}
@@ -16,15 +16,18 @@
 
 export default {
     name: "my-select",
+
+    data() {
+        return {
+            currencies: ['USD', 'EUR'],
+        }
+    },
+
     props: {
         modelValue:{
             type: String,
             required: true
         },
-        options: {
-            type: Array,
-            required: true
-        }
     },
     methods: {
         updateValue(event){
